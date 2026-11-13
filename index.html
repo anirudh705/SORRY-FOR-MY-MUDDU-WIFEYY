@@ -132,6 +132,77 @@ button:hover {
   50% { transform: scale(1.3); }
 }
 
+.virtual-letter {
+  text-align: center;
+  margin: 45px 15px;
+}
+
+.envelope {
+  position: relative;
+  background: #ffb6c9;
+  width: 230px;
+  height: 145px;
+  margin: 25px auto;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px #d98ba955;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-left: 115px solid transparent;
+  border-right: 115px solid transparent;
+  border-top: 85px solid #f28cae;
+  transform-origin: top;
+  transition: transform 0.6s;
+}
+
+.envelope-heart {
+  font-size: 30px;
+  z-index: 2;
+}
+
+.envelope p {
+  z-index: 2;
+  color: #8b3155;
+  font-weight: bold;
+}
+
+.envelope.opened .envelope-flap {
+  transform: rotateX(180deg);
+}
+
+.envelope-message {
+  display: none;
+  max-width: 430px;
+  margin: 25px auto;
+  padding: 25px;
+  background: #fff0f5;
+  color: #75364f;
+  border-radius: 15px;
+  line-height: 1.8;
+  white-space: pre-line;
+  animation: letterAppear 1s ease;
+}
+
+@keyframes letterAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 </style>
 </head>
 
@@ -276,6 +347,42 @@ button:hover {
 <script>
 function showSurprise() {
   document.getElementById("surpriseMessage").style.display = "block";
+}
+</script>
+
+<div class="virtual-letter">
+  <h2>A Little Letter For You 💌</h2>
+
+  <div class="envelope" onclick="openEnvelope()">
+    <div class="envelope-flap"></div>
+    <div class="envelope-heart">❤️</div>
+    <p>Tap to open</p>
+  </div>
+
+  <div id="envelopeMessage" class="envelope-message">
+    <h3>My Muddu Wifey 🌷</h3>
+    <p>
+      If I could give you one thing,
+      it would be the ability to see yourself
+      through my eyes.
+
+      You would know how precious you are.
+      I am sorry for the moments I made you feel
+      otherwise.
+
+      You deserve patience, respect and happiness.
+      I'll keep trying to show that through my actions.
+
+      Always remember, you matter so much. ❤️
+    </p>
+    <p>With love, always ❤️</p>
+  </div>
+</div>
+
+<script>
+function openEnvelope() {
+  document.querySelector(".envelope").classList.add("opened");
+  document.getElementById("envelopeMessage").style.display = "block";
 }
 </script>
 

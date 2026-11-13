@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -6,162 +6,248 @@
 <title>For My Muddu Wifey ❤️</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
   font-family: Georgia, serif;
   background: linear-gradient(135deg,#ffe4ec,#fff0f5,#fce4ec);
-  color: #873c57;
+  color: #874458;
   text-align: center;
   overflow-x: hidden;
 }
 
-.container {
-  width: 90%;
-  max-width: 550px;
-  margin: 65px auto;
-  padding: 35px 25px;
-  background: rgba(255,255,255,.75);
-  border-radius: 25px;
-  box-shadow: 0 10px 40px #d98ba955;
-  position: relative;
+.petals {
+  position: fixed;
+  top: -30px;
+  pointer-events: none;
+  animation: fall linear infinite;
   z-index: 2;
 }
 
-h1 { color: #c04470; font-size: 32px; }
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.card {
+  width: 100%;
+  max-width: 560px;
+  padding: 35px 25px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.76);
+  box-shadow: 0 12px 45px rgba(180,90,120,.16);
+  animation: appear 1.5s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.lotus {
+  font-size: 65px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% { transform: translateY(-12px); }
+}
+
+h1 {
+  color: #bd5878;
+  font-size: 32px;
+  line-height: 1.3;
+}
 
 .subtitle {
   font-size: 17px;
   line-height: 1.8;
+  color: #916879;
 }
-
-.lotus { font-size: 55px; margin: 15px; }
 
 button {
   border: none;
-  background: #d95d88;
+  background: linear-gradient(135deg,#d86b8a,#b94e70);
   color: white;
-  padding: 14px 25px;
-  border-radius: 30px;
+  padding: 16px 28px;
+  border-radius: 40px;
   font-size: 16px;
   cursor: pointer;
-  margin: 12px;
-  box-shadow: 0 5px 15px #d95d8844;
+  margin-top: 20px;
+  box-shadow: 0 6px 20px #d99aaf;
 }
 
-button:hover { background: #b83d6a; }
+button:hover {
+  transform: scale(1.04);
+}
 
-#letter {
+.letter {
   display: none;
+  margin-top: 25px;
+  padding: 24px;
+  background: #fff6f8;
+  border: 1px solid #f4ccd8;
+  border-radius: 18px;
   text-align: left;
   line-height: 1.9;
-  padding: 15px;
   animation: appear 1s ease;
 }
 
-@keyframes appear {
-  from {opacity:0; transform:translateY(15px);}
-  to {opacity:1; transform:translateY(0);}
+.letter h2 {
+  text-align: center;
+  color: #bd5878;
 }
 
-.flower {
-  position: fixed;
-  top: -40px;
-  z-index: 1;
-  pointer-events: none;
-  animation: fall linear forwards;
+.signature {
+  text-align: right;
+  color: #bd5878;
+  font-style: italic;
 }
 
-@keyframes fall {
-  to { transform: translateY(110vh) rotate(360deg); }
+.footer {
+  margin-top: 30px;
+  font-size: 14px;
 }
 
-.footer { font-size: 14px; margin-top: 30px; }
+.heart {
+  color: #dc6686;
+  animation: beat 1.2s infinite;
+  display: inline-block;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.3); }
+}
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
+  <main class="card">
 
-  <div class="lotus">🪷</div>
+    <div class="lotus">🪷</div>
 
-  <h1>I'm Sorry, My Muddu Wifey ❤️</h1>
+    <h1>I'm Sorry, My Muddu Wifey ❤️</h1>
 
-  <p class="subtitle">
-    A little website, a big apology<br>
-    and a heart that wants to make things right.
-  </p>
-
-  <p>🌸 You deserve kindness, respect and understanding. 🌸</p>
-
-  <button onclick="showLetter()">
-    Open my little letter 💌
-  </button>
-
-  <div id="letter">
-    <h2>My Dearest Wifey ❤️</h2>
-
-    <p>
-      I know my words have hurt you, and I'm genuinely sorry.
-      I should have thought about your feelings before speaking.
+    <p class="subtitle">
+      Sometimes words hurt more than we realise...
+      <br>
+      And this little space is my way of saying
+      that I'm truly sorry.
     </p>
 
-    <p>
-      You deserve to feel respected, appreciated and understood.
-      I never want you to feel judged or that you have to change
-      yourself to make me happy.
-    </p>
+    <p>🌸 You deserve kindness, respect and understanding 🌸</p>
 
-    <p>
-      I cannot undo what I said, but I can take responsibility
-      and work on becoming more thoughtful with my words and actions.
-    </p>
+    <button onclick="openLetter()">
+      Open My Little Letter 💌
+    </button>
 
-    <p>
-      I don't expect you to forget everything immediately
-      or forgive me just because I made this website.
-      Take your time. Your feelings matter to me.
-    </p>
+    <section class="letter" id="letter">
 
-    <p>
-      I'm truly sorry, my muddu wifey. 🥺❤️
-    </p>
+      <h2>To My Favourite Person ❤️</h2>
 
-    <h3 style="text-align:center">With love and a sincere apology 🪷</h3>
-  </div>
+      <p>
+        My dear wifeyyy,
+      </p>
 
-  <div class="footer">
-    Made with love, just for you 🌷
-  </div>
+      <p>
+        I'm genuinely sorry for the words that hurt you.
+        I should have thought about your feelings before
+        speaking. You never deserved to feel judged or
+        misunderstood by someone who cares about you.
+      </p>
 
+      <p>
+        I know that saying sorry cannot immediately
+        undo the hurt. I don't want to make excuses
+        or expect you to forget everything.
+      </p>
+
+      <p>
+        I want to learn from my mistakes, listen to you
+        better and show you through my actions that
+        your feelings matter to me.
+      </p>
+
+      <p>
+        You deserve to feel respected, appreciated
+        and comfortable being yourself.
+      </p>
+
+      <p>
+        Take all the time you need.
+        I won't pressure you to respond or forgive me.
+        I just wanted you to know that I recognise
+        where I went wrong.
+      </p>
+
+      <p>
+        One more time...
+        I'm truly sorry, my muddu wifey. 🥺
+      </p>
+
+      <div class="signature">
+        With love and sincerity,<br>
+        Yours ❤️
+      </div>
+
+    </section>
+
+    <div class="footer">
+      Made with love, just for you
+      <span class="heart">♥</span>
+      <br>
+      🪷🌸🪷
+    </div>
+
+  </main>
 </div>
 
 <script>
-function showLetter() {
-  document.getElementById("letter").style.display = "block";
+function openLetter() {
+  const letter = document.getElementById("letter");
+
+  if (letter.style.display === "block") {
+    letter.style.display = "none";
+  } else {
+    letter.style.display = "block";
+  }
 }
 
-const flowers = ["🌸","🌷","🌺","💗","🪷"];
+const flowers = ["🌸","🌷","🪷","🌺","💗"];
 
-function createFlower() {
-  const flower = document.createElement("div");
-  flower.className = "flower";
-  flower.innerHTML =
-    flowers[Math.floor(Math.random()*flowers.length)];
+function createPetal() {
+  const petal = document.createElement("div");
 
-  flower.style.left = Math.random()*100 + "vw";
-  flower.style.fontSize = (16+Math.random()*18) + "px";
-  flower.style.animationDuration = (5+Math.random()*5) + "s";
+  petal.className = "petals";
+  petal.innerHTML =
+    flowers[Math.floor(Math.random() * flowers.length)];
 
-  document.body.appendChild(flower);
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.fontSize = (15 + Math.random() * 18) + "px";
+  petal.style.animationDuration = (6 + Math.random() * 7) + "s";
 
-  setTimeout(() => flower.remove(), 10000);
+  document.body.appendChild(petal);
+
+  setTimeout(() => petal.remove(), 14000);
 }
 
-setInterval(createFlower, 450);
+setInterval(createPetal, 450);
 </script>
 
 </body>

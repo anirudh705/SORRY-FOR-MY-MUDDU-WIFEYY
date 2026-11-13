@@ -203,6 +203,77 @@ button:hover {
   }
 }
 
+.cupid-game {
+  text-align: center;
+  margin: 50px 10px;
+  padding: 25px 10px;
+  background: #fff0f5;
+  border-radius: 20px;
+}
+
+.shooting-area {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+.target-heart {
+  position: absolute;
+  right: 18%;
+  top: 50px;
+  font-size: 65px;
+}
+
+.flying-arrow {
+  position: absolute;
+  left: 10%;
+  top: 65px;
+  font-size: 55px;
+  transform: rotate(0deg);
+  opacity: 0;
+}
+
+.flying-arrow.shoot {
+  opacity: 1;
+  animation: arrowFly 1s ease-in forwards;
+}
+
+@keyframes arrowFly {
+  from { left: 10%; }
+  to { left: 72%; }
+}
+
+.target-heart.hit {
+  animation: heartHit 0.5s ease 3;
+}
+
+@keyframes heartHit {
+  50% { transform: scale(1.35); }
+}
+
+function shootArrow() {
+  const arrow = document.getElementById("flyingArrow");
+  const heart = document.getElementById("targetHeart");
+  const message = document.getElementById("hitMessage");
+  const button = document.getElementById("shootButton");
+
+  if (button.disabled) return;
+
+  button.disabled = true;
+  arrow.classList.remove("shoot");
+
+  void arrow.offsetWidth;
+
+  arrow.classList.add("shoot");
+
+  setTimeout(() => {
+    heart.classList.add("hit");
+    message.style.display = "block";
+    button.innerText = "You hit my heart! 💘";
+  }, 1000);
+}
+
 </style>
 </head>
 
@@ -385,6 +456,24 @@ function openEnvelope() {
   document.getElementById("envelopeMessage").style.display = "block";
 }
 </script>
+
+<div class="cupid-game">
+  <h2>Can You Hit My Heart? 🏹</h2>
+  <p>One arrow, one target... your aim! 💗</p>
+
+  <div class="shooting-area">
+    <div class="target-heart" id="targetHeart">❤️</div>
+    <div class="flying-arrow" id="flyingArrow">➶</div>
+  </div>
+
+  <button onclick="shootArrow()" id="shootButton">
+    Shoot Your Love Arrow 🏹
+  </button>
+
+  <h3 id="hitMessage" style="display:none;">
+    Bullseye! You just hit my heart again! 💘
+  </h3>
+</div>
 
 <div class="footer">
     <div class="footer">
